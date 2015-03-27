@@ -1,5 +1,11 @@
 /* global process */
 // Karma configuration
+var webpack = require('webpack');
+var plugins = [
+  new webpack.DefinePlugin({
+    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+  })
+];
 
 module.exports = function(config) {
   config.set({
@@ -24,6 +30,33 @@ module.exports = function(config) {
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
       'tests.webpack.js': ['webpack']
+    },
+
+    webpack: {
+      output: {
+        library: 'Waypoint',
+        libraryTarget: 'var'
+      },
+
+      externals: {
+        react: 'React'
+      },
+
+      node: {
+        Buffer: false
+      },
+
+      plugins: plugins,
+
+      module: {
+        loaders: [
+          {
+            test: /\.jsx?$/,
+            loaders: ['babel-loader?optional=runtime&cacheDirectory=true'],
+            exclude: /node_modules/
+          }
+        ]
+      }
     },
 
     webpackMiddleware: {

@@ -1,4 +1,4 @@
-var React = require('react');
+var React = require('../node_modules/react/react.js');
 
 var PropTypes = React.PropTypes;
 
@@ -149,7 +149,7 @@ var Waypoint = React.createClass({
   render: function() {
     // We need an element that we can locate in the DOM to determine where it is
     // rendered relative to the top of its context.
-    return React.createElement('span', { style: { fontSize: 0 } });
+    return (<span style={{fontSize: 0}} />);
   }
 });
 
