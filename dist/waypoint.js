@@ -1,4 +1,4 @@
-var React = require('react');
+var React = global.React || require('react');
 
 var PropTypes = React.PropTypes;
 
@@ -152,5 +152,3 @@ var Waypoint = React.createClass({
     return React.createElement('span', { style: { fontSize: 0 } });
   }
 });
-
-module.exports = Waypoint;
