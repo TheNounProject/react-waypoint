@@ -1,5 +1,3 @@
-var React = global.React || require('react');
-
 var PropTypes = React.PropTypes;
 
 /**
